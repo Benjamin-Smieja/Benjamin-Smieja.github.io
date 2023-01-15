@@ -36,15 +36,70 @@
       <button onclick="onSubmit()" id="submitButton1" class="btn btn-primary mb-2">Submit</button>
     </div>
   </div>
+  
+  <h1 id="guess1_correct_msg"></h1> 
+  <h1 id="clue2_msg"></h1> 
 
-  <!-- <button onclick="myFunction()">Try it</button> -->
+  <div id="guess_section_2" class="form-row align-items-center" hidden>
+    <div class="col-auto">
+      <label class="sr-only" for="inlineFormInput2">Guess</label>
+      <input type="text" class="form-control mb-2" id="inlineFormInput2" placeholder="Super Secret Message">
+    </div>
+    <div class="col-auto">
+      <button onclick="onSubmit2()" id="submitButton2" class="btn btn-primary mb-2">Submit</button>
+    </div>
+  </div>
+
+  <h1 id="under2"></h1> 
+
+  <img src="racoon-1.png" id = "woo_racoon" class="img-fluid" alt="Not Cat :0" hidden>
+
+  <h1 id="clue_final"></h1> 
+
+
+
+
 
   <script>
+    var secret_names = ["","","loala","boobird","linen","rule no. 10 section viii","sealess boomer","lumpkin","peek-a","loops","landthanum","bestie","luddy","beautiful","booberry","thyroxin","lifty","leaver","lity gurl","lute","charlina","laina","launa"];
+    
+    var pls_dont_b_mad = ["ferrah","rick","catrick","skittles","harry"];    
+    var secret_word_2 = pls_dont_b_mad[Math.floor(Math.random()*pls_dont_b_mad.length)];
+    console.log(secret_word_2);
+    var coords_clue = [];
+
+    for(i in secret_word_2){
+        let letter_coords_possible = []
+        // console.log(secret_word_2[i]);
+        for(day in secret_names){
+            for(lets in secret_names[day]){
+                if(secret_names[day][lets]===secret_word_2[i]){
+                    letter_coords_possible.push({"day":parseInt(day)+1,"lets":parseInt(lets)+1});
+                }
+            }
+        } 
+        if(letter_coords_possible.length > 0){
+          coords_clue.push(letter_coords_possible[Math.floor(Math.random()*letter_coords_possible.length)])
+        }else{
+          coords_clue.push({"day":"Ben","lets":"Messed UpPPp"});
+        }
+        
+    }
+    console.log(coords_clue)
+    var clue_2_coords = ""
+    for (coord of coords_clue){
+        clue_2_coords += "("+coord['day']+","+coord['lets']+"), ";
+    }
+    clue_2_coords = clue_2_coords.substring(0,clue_2_coords.length-2)
+
+
     var guess1_tries = 0
+    var guess2_tries = 0
     var input = document.getElementById("inlineFormInput");
-    var under1 = document.createElement("H1");
+    var input2 = document.getElementById("inlineFormInput2");
+    var under1 = document.getElementById("guess1_correct_msg");
+    var under2 = document.getElementById("under2");
     var x_mark = "&#10060"
-    document.body.appendChild(under1);
 
     // Execute a function when the user presses a key on the keyboard
     input.addEventListener("keypress", function (event) {
@@ -57,14 +112,22 @@
       }
     });
 
+     // Execute a function when the user presses a key on the keyboard
+     input2.addEventListener("keypress", function (event) {
+      // If the user presses the "Enter" key on the keyboard
+      if (event.key === "Enter") {
+        // Cancel the default action, if needed
+        event.preventDefault();
+        // Trigger the button element with a click
+        document.getElementById("submitButton2").click();
+      }
+    });
+
     function addNewQuestion() {
-      var clue2 = document.createElement("H1");
-      clue2.innerHTML = "(0,1)(0,2) (0,3) - Dis Part Under Construction :(";
-      document.body.appendChild(clue2);
-      var x = document.createElement("INPUT");
-      x.setAttribute("type", "text");
-      // x.setAttribute("value", "d!");
-      document.body.appendChild(x);
+      var clue2 = document.getElementById("clue2_msg");
+      clue2.innerHTML = clue_2_coords;
+      var guess_section_2 = document.getElementById("guess_section_2").hidden = false;
+
     } 
 
     function onSubmit() {
@@ -73,7 +136,6 @@
       // x.setAttribute("type", "text");
 
       if (guess.toLowerCase().trim() === "ur cute") {
-        // x.innerHTML = guess
         under1.innerHTML = "WOOOOoOOoOO You got it &#129395";
         document.getElementById('inlineFormInput').readOnly = true;
         document.getElementById('inlineFormInput').style.backgroundColor = "#b6ffa3";
@@ -81,11 +143,37 @@
         addNewQuestion();
 
       }else{
-        // document.getElementById("inlineFormInput").setAttribute('outline-color', '#fc0303')
         guess1_tries +=1;
         under1.innerHTML = x_mark.repeat(guess1_tries);
         if(guess1_tries > 3){
           under1.innerHTML +="Hint: sometimes you need to look at things from a new angle :0";
+        }
+      }
+      window.scrollTo(0, document.body.scrollHeight);
+
+    }
+
+    function onSubmit2() {
+      var guess = document.getElementById('inlineFormInput2').value
+
+      if (guess.toLowerCase().trim() === secret_word_2) {
+        under2.innerHTML = "&#129395 WOoOooOOoo You Reached the end!! &#129395";
+        document.getElementById('inlineFormInput2').readOnly = true;
+        document.getElementById('inlineFormInput2').style.backgroundColor = "#b6ffa3";
+        document.getElementById("submitButton2").hidden = true;
+        var cf = document.getElementById("clue_final");
+        cf.innerHTML = "Final Clue: A great place to check for monsters :)(: (Also Ricks first favourite spot)"
+        document.getElementById("woo_racoon").hidden = false;
+
+      }else{
+        guess2_tries +=1;
+        under2.innerHTML = x_mark.repeat(guess2_tries);
+        if(guess2_tries > 5){
+          under2.innerHTML += "Hint: cute = (21,1), (6,2), (11,5), (9,3)";
+        }
+        
+        if(guess2_tries > 10){
+          under2.innerHTML += "\nHint: boobird = (4,all)";
         }
       }
       window.scrollTo(0, document.body.scrollHeight);
@@ -98,3 +186,39 @@
 </body>
 
 </html>
+
+
+<!--
+var secret_names = ["","","loala","boobird","linen","rule no. 10 section viii","sealess boomer","lumpkin","peek-a","loops","landthanum","bestie","luddy","beautiful","booberry","thyroxin","lifty","leaver","lity gurl","lute","charlina","laina","launa"];
+var secret_word_2 = "guitar";
+
+var let_check = 'n'
+
+var coords_clue = [];
+
+for(i in secret_word_2){
+    let letter_coords_possible = []
+    // console.log(secret_word_2[i]);
+    for(day in secret_names){
+        for(lets in secret_names[day]){
+            if(secret_names[day][lets]===secret_word_2[i]){
+                letter_coords_possible.push({"day":parseInt(day)+1,"lets":parseInt(lets)+1});
+                // console.log(secret_names[day]);
+                // console.log(Math.random());
+            }
+        }
+    }
+    // console.log(letter_coords_possible)
+    
+    coords_clue.push(letter_coords_possible[Math.floor(Math.random()*letter_coords_possible.length)])
+}
+console.log(coords_clue)
+var clue_2_coords = ""
+for (coord of coords_clue){
+    clue_2 += "("+coord['day']+","+coord['lets']+") ,";
+}
+clue_2_coords = clue_2.substring(0,clue_2.length-2)
+
+console.log(clue_2);
+
+ -->
