@@ -1,224 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <link rel="icon" type="image/png" href="/raccoon.png">
-  <title>Booberry IQ Test</title>
-  <!-- <link rel="stylesheet" href="style.css"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fucculent Greetings</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fdfdfd;
+      color: #333;
+      line-height: 1.6;
+      animation: fadeIn 1.2s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Header */
+    header {
+      background: rgba(255,255,255,0.9);
+      padding: 1.5rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #eee;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(6px);
+    }
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: #4a3f35;
+    }
+    nav a {
+      margin-left: 2rem;
+      text-decoration: none;
+      color: #4a3f35;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav a:hover { color: #c97b63; }
+
+    /* Hero with big image */
+    .hero {
+      height: 100vh;
+      background: url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      color: #fff;
+      position: relative;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.4);
+    }
+    .hero h2, .hero p, .hero button {
+      position: relative;
+      z-index: 1;
+      animation: slideUp 1s ease-out;
+    }
+    @keyframes slideUp {
+      from { transform: translateY(40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .hero h2 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      max-width: 600px;
+      margin-bottom: 2rem;
+      font-size: 1.2rem;
+    }
+    .hero button {
+      background: #c97b63;
+      color: #fff;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.3s, background 0.3s;
+    }
+    .hero button:hover {
+      background: #a85d47;
+      transform: scale(1.05);
+    }
+
+    /* Card Grid */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      padding: 4rem 3rem;
+      margin-top: -2rem;
+    }
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      overflow: hidden;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .card h3 {
+      padding: 1rem;
+      font-size: 1.2rem;
+      color: #4a3f35;
+    }
+    .card p {
+      padding: 0 1rem 1rem;
+      color: #666;
+    }
+
+    /* Footer */
+    footer {
+      background: #f9f4ef;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #555;
+    }
+  </style>
 </head>
+<body>
+  <header>
+    <h1>Fucculent Greetings</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Shop</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
 
-<body style="background-color:#dfaafa;">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
-  <h1 class="text-left">O Heyyyyyy :))</h1>
-  <img src="cat-1.jpg" class="img-fluid" alt="Cat :0">
-  <h1 class="text-center">Merry Christmas!</h1>
-  <img src="cat-2.jpg" class="img-fluid" alt="Cat :0">
-  <h1 class="text-center">Merry Christmas!</h1>
-  <img src="cat-3.jpg" class="img-fluid" alt="Cat :0">
-  <h1 class="text-center">I just liked these pics :/</h1>
-  <img src="cat-4.jpg" class="img-fluid" alt="Cat :0">
+  <section class="hero">
+    <h2>Succulent Cards, Big Warm Welcome</h2>
+    <p>Step into a world of cozy, modern greetings inspired by nature’s resilience.</p>
+    <button>Explore Collection</button>
+  </section>
 
-  <h2>Did you find boots?</h2>
-
-  <div class="form-row align-items-center">
-    <div class="col-auto">
-      <label class="sr-only" for="inlineFormInput">Guess</label>
-      <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Super Secret Message">
+  <section class="cards">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1524594154908-1f6f0be1d8f5?auto=format&fit=crop&w=800&q=80" alt="Birthday Card">
+      <h3>Birthday Bloom</h3>
+      <p>A cheerful succulent design to brighten someone’s special day.</p>
     </div>
-    <div class="col-auto">
-      <button onclick="onSubmit()" id="submitButton1" class="btn btn-primary mb-2">Submit</button>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=800&q=80" alt="Love Card">
+      <h3>Modern Love</h3>
+      <p>Celebrate love with a clean, elegant succulent motif.</p>
     </div>
-  </div>
-  
-  <h1 id="guess1_correct_msg"></h1> 
-  <h1 id="clue2_msg"></h1> 
-
-  <div id="guess_section_2" class="form-row align-items-center" hidden>
-    <div class="col-auto">
-      <label class="sr-only" for="inlineFormInput2">Guess</label>
-      <input type="text" class="form-control mb-2" id="inlineFormInput2" placeholder="Super Secret Message">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" alt="Thank You Card">
+      <h3>Cozy Thanks</h3>
+      <p>Send gratitude wrapped in warmth and charm.</p>
     </div>
-    <div class="col-auto">
-      <button onclick="onSubmit2()" id="submitButton2" class="btn btn-primary mb-2">Submit</button>
-    </div>
-  </div>
+  </section>
 
-  <h1 id="under2"></h1> 
-
-  <img src="racoon-1.png" id = "woo_racoon" class="img-fluid" alt="Not Cat :0" hidden>
-
-  <h1 id="clue_final"></h1> 
-
-
-
-
-
-  <script>
-    var secret_names = ["","","loala","boobird","linen","rule no. 10 section viii","sealess boomer","lumpkin","peek-a","loops","landthanum","bestie","luddy","beautiful","booberry","thyroxin","lifty","leaver","lity gurl","lute","charlina","laina","launa"];
-    
-    var pls_dont_b_mad = ["ferrah","rick","catrick","skittles","harry"];    
-    var secret_word_2 = pls_dont_b_mad[Math.floor(Math.random()*pls_dont_b_mad.length)];
-    console.log(secret_word_2);
-    var coords_clue = [];
-
-    for(i in secret_word_2){
-        let letter_coords_possible = []
-        // console.log(secret_word_2[i]);
-        for(day in secret_names){
-            for(lets in secret_names[day]){
-                if(secret_names[day][lets]===secret_word_2[i]){
-                    letter_coords_possible.push({"day":parseInt(day)+1,"lets":parseInt(lets)+1});
-                }
-            }
-        } 
-        if(letter_coords_possible.length > 0){
-          coords_clue.push(letter_coords_possible[Math.floor(Math.random()*letter_coords_possible.length)])
-        }else{
-          coords_clue.push({"day":"Ben","lets":"Messed UpPPp"});
-        }
-        
-    }
-    console.log(coords_clue)
-    var clue_2_coords = ""
-    for (coord of coords_clue){
-        clue_2_coords += "("+coord['day']+","+coord['lets']+"), ";
-    }
-    clue_2_coords = clue_2_coords.substring(0,clue_2_coords.length-2)
-
-
-    var guess1_tries = 0
-    var guess2_tries = 0
-    var input = document.getElementById("inlineFormInput");
-    var input2 = document.getElementById("inlineFormInput2");
-    var under1 = document.getElementById("guess1_correct_msg");
-    var under2 = document.getElementById("under2");
-    var x_mark = "&#10060"
-
-    // Execute a function when the user presses a key on the keyboard
-    input.addEventListener("keypress", function (event) {
-      // If the user presses the "Enter" key on the keyboard
-      if (event.key === "Enter") {
-        // Cancel the default action, if needed
-        event.preventDefault();
-        // Trigger the button element with a click
-        document.getElementById("submitButton1").click();
-      }
-    });
-
-     // Execute a function when the user presses a key on the keyboard
-     input2.addEventListener("keypress", function (event) {
-      // If the user presses the "Enter" key on the keyboard
-      if (event.key === "Enter") {
-        // Cancel the default action, if needed
-        event.preventDefault();
-        // Trigger the button element with a click
-        document.getElementById("submitButton2").click();
-      }
-    });
-
-    function addNewQuestion() {
-      var clue2 = document.getElementById("clue2_msg");
-      clue2.innerHTML = clue_2_coords;
-      var guess_section_2 = document.getElementById("guess_section_2").hidden = false;
-
-    } 
-
-    function onSubmit() {
-      var guess = document.getElementById('inlineFormInput').value
-      
-      // x.setAttribute("type", "text");
-
-      if (guess.toLowerCase().trim() === "ur cute") {
-        under1.innerHTML = "WOOOOoOOoOO You got it &#129395";
-        document.getElementById('inlineFormInput').readOnly = true;
-        document.getElementById('inlineFormInput').style.backgroundColor = "#b6ffa3";
-        document.getElementById("submitButton1").hidden = true;
-        addNewQuestion();
-
-      }else{
-        guess1_tries +=1;
-        under1.innerHTML = x_mark.repeat(guess1_tries);
-        if(guess1_tries > 3){
-          under1.innerHTML +="Hint: sometimes you need to look at things from a new angle :0";
-        }
-      }
-      window.scrollTo(0, document.body.scrollHeight);
-
-    }
-
-    function onSubmit2() {
-      var guess = document.getElementById('inlineFormInput2').value
-
-      if (guess.toLowerCase().trim() === secret_word_2) {
-        under2.innerHTML = "&#129395 WOoOooOOoo You Reached the end!! &#129395";
-        document.getElementById('inlineFormInput2').readOnly = true;
-        document.getElementById('inlineFormInput2').style.backgroundColor = "#b6ffa3";
-        document.getElementById("submitButton2").hidden = true;
-        var cf = document.getElementById("clue_final");
-        cf.innerHTML = "Final Clue: A great place to check for monsters :)(: (Also Rick's first favourite spot)"
-        document.getElementById("woo_racoon").hidden = false;
-
-      }else{
-        guess2_tries +=1;
-        under2.innerHTML = x_mark.repeat(guess2_tries);
-        if(guess2_tries > 5){
-          under2.innerHTML += "Hint: cute = (21,1), (6,2), (11,5), (9,3)";
-        }
-        
-        if(guess2_tries > 10){
-          under2.innerHTML += "\nHint: boobird = (4,all)";
-        }
-      }
-      window.scrollTo(0, document.body.scrollHeight);
-
-    }
-
-
-  </script>
-
+  <footer>
+    <p>&copy; 2025 Fucculent Greetings | Designed with love</p>
+  </footer>
 </body>
-
 </html>
-
-
-<!--
-var secret_names = ["","","loala","boobird","linen","rule no. 10 section viii","sealess boomer","lumpkin","peek-a","loops","landthanum","bestie","luddy","beautiful","booberry","thyroxin","lifty","leaver","lity gurl","lute","charlina","laina","launa"];
-var secret_word_2 = "guitar";
-
-var let_check = 'n'
-
-var coords_clue = [];
-
-for(i in secret_word_2){
-    let letter_coords_possible = []
-    // console.log(secret_word_2[i]);
-    for(day in secret_names){
-        for(lets in secret_names[day]){
-            if(secret_names[day][lets]===secret_word_2[i]){
-                letter_coords_possible.push({"day":parseInt(day)+1,"lets":parseInt(lets)+1});
-                // console.log(secret_names[day]);
-                // console.log(Math.random());
-            }
-        }
-    }
-    // console.log(letter_coords_possible)
-    
-    coords_clue.push(letter_coords_possible[Math.floor(Math.random()*letter_coords_possible.length)])
-}
-console.log(coords_clue)
-var clue_2_coords = ""
-for (coord of coords_clue){
-    clue_2 += "("+coord['day']+","+coord['lets']+") ,";
-}
-clue_2_coords = clue_2.substring(0,clue_2.length-2)
-
-console.log(clue_2);
-
- -->
