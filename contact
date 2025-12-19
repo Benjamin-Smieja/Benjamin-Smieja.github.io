@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>contact | fucculent greetings</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; background:#fdfdfd; color:#333; text-transform: lowercase; }
+    header, footer { background:#f9f4ef; padding:1.5rem 3rem; display:flex; justify-content:space-between; }
+    nav a { margin-left:2rem; text-decoration:none; color:#4a3f35; }
+    .content { text-align:center; padding:4rem; }
+    .content p { font-size:1.2rem; margin:1rem 0; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>fucculent greetings</h1>
+    <nav>
+      <a href="index.html">home</a>
+      <a href="shop.html">shop</a>
+      <a href="about.html">about</a>
+      <a href="contact.html">contact</a>
+    </nav>
+  </header>
+  <div class="content">
+    <h2>contact us</h2>
+    <p>email: cards@fucculentgreetings.com</p>
+    <p>instagram: fucculent_greetings</p>
+  </div>
+  <footer>
+    <p>&copy; 2025 fucculent greetings | designed with love</p>
+  </footer>
+</body>
+</html>
