@@ -185,27 +185,30 @@
 
         .grid-line {
             display: flex;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
             justify-content: center;
             align-items: flex-end;
-            gap: 0.25rem;
+            gap: clamp(0.08rem, 1.2vw, 0.25rem);
+            width: 100%;
+            max-width: 100%;
             user-select: none;
         }
 
         .literal-box {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 1.2rem;
+            font-size: clamp(0.9rem, 3.5vw, 1.2rem);
             font-weight: 800;
             color: var(--brand-primary);
-            padding: 0 0.1rem;
+            padding: 0 0.05rem;
             align-self: center;
+            flex-shrink: 0;
         }
 
         .literal-box.literal-dot {
-            font-size: 1.8rem;
+            font-size: clamp(1.2rem, 5vw, 1.8rem);
             line-height: 1;
             align-self: flex-end;
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.15rem;
         }
 
         /* Tile Box Component - Scaled for Small Mobile Screens */
@@ -213,21 +216,22 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.15rem;
+            gap: 0.1rem;
             cursor: pointer;
             position: relative;
+            flex-shrink: 1;
         }
 
         .tile-label {
-            font-size: 0.65rem;
+            font-size: clamp(0.5rem, 2vw, 0.65rem);
             font-weight: 800;
             color: var(--text-muted);
             text-transform: uppercase;
         }
 
         .tile {
-            width: clamp(2.1rem, 7.8vw, 2.75rem);
-            height: clamp(2.6rem, 9.5vw, 3.25rem);
+            width: clamp(1.45rem, 6.2vw, 2.75rem);
+            height: clamp(1.95rem, 8vw, 3.25rem);
             perspective: 1000px;
         }
 
@@ -256,7 +260,7 @@
             align-items: center;
             justify-content: center;
             font-family: 'JetBrains Mono', monospace;
-            font-size: clamp(1.1rem, 4.5vw, 1.45rem);
+            font-size: clamp(0.85rem, 3.6vw, 1.45rem);
             font-weight: 800;
             border-radius: var(--radius-sm);
             border: 2px solid #e6d7d2;
@@ -749,6 +753,30 @@
             pointer-events: none;
             z-index: 1001;
         }
+
+        /* Question Section & Dedicated Uncovered Animal Photo Banner */
+        .question-section {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            padding: 0;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .question-photo-header {
+            width: 100%;
+            height: clamp(170px, 45vw, 240px);
+            background-size: cover;
+            background-repeat: no-repeat;
+            transition: background-image 0.4s ease, background-position 0.4s ease;
+        }
+
+        .question-content-wrap {
+            padding: 1.25rem;
+            background: #ffffff;
+        }
     </style>
 </head>
 
@@ -820,36 +848,39 @@
 
         <!-- Question Component Container -->
         <section class="question-section" id="questionSection">
-            <div class="clue-header-bar">
-                <div class="clue-tag" id="clueTag">Clue A</div>
-                <div class="clue-digits-badge" id="clueDigitsInfo">Fills 2 Digits</div>
+            <div class="question-photo-header" id="questionPhotoHeader"></div>
+            <div class="question-content-wrap">
+                <div class="clue-header-bar">
+                    <div class="clue-tag" id="clueTag">Clue A</div>
+                    <div class="clue-digits-badge" id="clueDigitsInfo">Fills 2 Digits</div>
+                </div>
+
+                <h3 class="question-title" id="questionTitle">Loading...</h3>
+                <div class="question-description" id="questionDesc"></div>
+
+                <form id="questionForm" onsubmit="event.preventDefault(); PuzzleApp.submitAnswer();">
+                    <div class="form-group" id="inputContainer"></div>
+
+                    <div class="feedback-box" id="feedbackBox">
+                        <span class="feedback-icon" id="feedbackIcon">⚠️</span>
+                        <span id="feedbackText">Incorrect answer!</span>
+                    </div>
+
+                    <div class="action-bar">
+                        <button type="button" class="btn btn-nav" id="prevBtn" onclick="PuzzleApp.navigateClue(-1)"
+                            title="Previous Clue">
+                            ‹
+                        </button>
+                        <button type="submit" class="btn btn-primary" id="submitBtn">
+                            Submit Answer
+                        </button>
+                        <button type="button" class="btn btn-nav" id="nextBtn" onclick="PuzzleApp.navigateClue(1)"
+                            title="Next Clue">
+                            ›
+                        </button>
+                    </div>
+                </form>
             </div>
-
-            <h3 class="question-title" id="questionTitle">Loading...</h3>
-            <div class="question-description" id="questionDesc"></div>
-
-            <form id="questionForm" onsubmit="event.preventDefault(); PuzzleApp.submitAnswer();">
-                <div class="form-group" id="inputContainer"></div>
-
-                <div class="feedback-box" id="feedbackBox">
-                    <span class="feedback-icon" id="feedbackIcon">⚠️</span>
-                    <span id="feedbackText">Incorrect answer!</span>
-                </div>
-
-                <div class="action-bar">
-                    <button type="button" class="btn btn-nav" id="prevBtn" onclick="PuzzleApp.navigateClue(-1)"
-                        title="Previous Clue">
-                        ‹
-                    </button>
-                    <button type="submit" class="btn btn-primary" id="submitBtn">
-                        Submit Answer
-                    </button>
-                    <button type="button" class="btn btn-nav" id="nextBtn" onclick="PuzzleApp.navigateClue(1)"
-                        title="Next Clue">
-                        ›
-                    </button>
-                </div>
-            </form>
         </section>
     </main>
 
@@ -939,7 +970,9 @@
                     type: 'text',
                     placeholder: 'Enter 2-digit number...',
                     answerHashes: ['44cb730c420480a0477b505ae68af508fb90f96cf0ec54c6ad16949dd427f13a'],
-                    digitCount: 2
+                    digitCount: 2,
+                    image: 'PXL_20260311_034003441.jpg',
+                    bgPos: '50% 25%'
                 },
                 {
                     id: 'clueB',
@@ -949,7 +982,9 @@
                     type: 'text',
                     placeholder: 'Enter 2-digit answer...',
                     answerHashes: ['7688b6ef52555962d008fff894223582c484517cea7da49ee67800adc7fc8866'],
-                    digitCount: 2
+                    digitCount: 2,
+                    image: 'PXL_20260511_034043625.MP.jpg',
+                    bgPos: '45% 45%'
                 },
                 {
                     id: 'clueC',
@@ -959,7 +994,9 @@
                     type: 'text',
                     placeholder: 'Enter answer...',
                     answerHashes: ['785f3ec7eb32f30b90cd0fcf3657d388b5ff4297f2f9716ff66e9b69c05ddd09'],
-                    digitCount: 2
+                    digitCount: 2,
+                    image: 'PXL_20260611_170109415.MP.jpg',
+                    bgPos: '50% 25%'
                 },
                 {
                     id: 'clueD',
@@ -969,7 +1006,9 @@
                     type: 'text',
                     placeholder: 'Enter answer...',
                     answerHashes: ['5316ca1c5ddca8e6ceccfce58f3b8540e540ee22f6180fb89492904051b3d531'],
-                    digitCount: 2
+                    digitCount: 2,
+                    image: 'PXL_20260612_004806190.jpg',
+                    bgPos: '40% 35%'
                 },
                 {
                     id: 'clueE',
@@ -979,7 +1018,9 @@
                     type: 'text',
                     placeholder: 'Enter answer...',
                     answerHashes: ['98a3ab7c340e8a033e7b37b6ef9428751581760af67bbab2b9e05d4964a8874a'],
-                    digitCount: 2
+                    digitCount: 2,
+                    image: 'PXL_20260805_012905311.jpg',
+                    bgPos: '30% 65%'
                 },
                 {
                     id: 'clueF',
@@ -989,7 +1030,9 @@
                     type: 'text',
                     placeholder: 'Enter 3-digit answer...',
                     answerHashes: ['99ee50221221864d50c60baea6f14d8ac2e235cc6e78be6088cd40cc97fca394'],
-                    digitCount: 3
+                    digitCount: 3,
+                    image: 'PXL_20260819_233027331.jpg',
+                    bgPos: '30% 55%'
                 },
                 {
                     id: 'clueG',
@@ -999,7 +1042,9 @@
                     type: 'text',
                     placeholder: 'Enter answer...',
                     answerHashes: ['e629fa6598d732768f7c726b4b621285f9c3b85303900aa912017db7617d8bdb'],
-                    digitCount: 2
+                    digitCount: 2,
+                    image: 'PXL_20260311_034003441.jpg',
+                    bgPos: '50% 25%'
                 },
                 {
                     id: 'clueH',
@@ -1009,7 +1054,9 @@
                     type: 'text',
                     placeholder: 'Enter 1-digit answer...',
                     answerHashes: ['6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b'],
-                    digitCount: 1
+                    digitCount: 1,
+                    image: 'PXL_20260611_170109415.MP.jpg',
+                    bgPos: '50% 25%'
                 }
             ]
         };
@@ -1141,6 +1188,15 @@
                 const clue = this.config.clues[this.currentClueIndex];
                 const isSolved = Boolean(this.state.solvedClues[clue.id]);
                 const isLocked = this.isClueLocked(clue.id);
+
+                const photoHeader = document.getElementById('questionPhotoHeader');
+                if (photoHeader && clue.image) {
+                    photoHeader.style.display = 'block';
+                    photoHeader.style.backgroundImage = `url('${clue.image}')`;
+                    photoHeader.style.backgroundPosition = clue.bgPos || 'center center';
+                } else if (photoHeader) {
+                    photoHeader.style.display = 'none';
+                }
 
                 document.getElementById('clueTag').textContent = `Clue ${clue.letter}`;
                 document.getElementById('clueDigitsInfo').textContent = `Fills ${clue.digitCount} Digit${clue.digitCount > 1 ? 's' : ''}`;
