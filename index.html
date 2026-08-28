@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>fucculent greetings</title>
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }ac
-    body {
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    ac body {
       font-family: 'Inter', sans-serif;
       background-color: #fdfdfd;
       color: #333;
@@ -16,13 +22,18 @@
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
     }
 
     /* Header */
     header {
-      background: rgba(255,255,255,0.9);
+      background: rgba(255, 255, 255, 0.9);
       padding: 1.5rem 3rem;
       display: flex;
       justify-content: space-between;
@@ -34,11 +45,13 @@
       z-index: 1000;
       backdrop-filter: blur(6px);
     }
+
     header h1 {
       font-family: 'Pacifico', cursive;
       font-size: 1.8rem;
       color: #4a3f35;
     }
+
     nav a {
       margin-left: 2rem;
       text-decoration: none;
@@ -46,7 +59,10 @@
       font-weight: 500;
       transition: color 0.3s;
     }
-    nav a:hover { color: #c97b63; }
+
+    nav a:hover {
+      color: #c97b63;
+    }
 
     /* Hero with big image */
     .hero {
@@ -60,30 +76,48 @@
       color: #fff;
       position: relative;
     }
+
     .hero::after {
       content: "";
       position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.4);
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.4);
     }
-    .hero h2, .hero p, .hero button {
+
+    .hero h2,
+    .hero p,
+    .hero button {
       position: relative;
       z-index: 1;
       animation: slideUp 1s ease-out;
     }
+
     @keyframes slideUp {
-      from { transform: translateY(40px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
+      from {
+        transform: translateY(40px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
+
     .hero h2 {
       font-size: 3rem;
       margin-bottom: 1rem;
     }
+
     .hero p {
       max-width: 600px;
       margin-bottom: 2rem;
       font-size: 1.2rem;
     }
+
     .hero button {
       background: #c97b63;
       color: #fff;
@@ -94,6 +128,7 @@
       cursor: pointer;
       transition: transform 0.3s, background 0.3s;
     }
+
     .hero button:hover {
       background: #a85d47;
       transform: scale(1.05);
@@ -107,27 +142,32 @@
       padding: 4rem 3rem;
       margin-top: -2rem;
     }
+
     .card {
       background: #fff;
       border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
       overflow: hidden;
       transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
+
     .card:hover {
       transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     }
+
     .card img {
       width: 100%;
       height: 200px;
       object-fit: cover;
     }
+
     .card h3 {
       padding: 1rem;
       font-size: 1.2rem;
       color: #4a3f35;
     }
+
     .card p {
       padding: 0 1rem 1rem;
       color: #666;
@@ -143,15 +183,16 @@
     }
   </style>
 </head>
+
 <body>
   <header>
     <h1>Fucculent Greetings</h1>
-   <nav>
-    <a href="index.html">home</a>
-    <a href="shop.html">shop</a>
-    <a href="about.html">about</a>
-    <a href="contact.html">contact</a>
-  </nav>
+    <nav>
+      <a href="index.html">home</a>
+      <a href="shop.html">shop</a>
+      <a href="about.html">about</a>
+      <a href="contact.html">contact</a>
+    </nav>
 
   </header>
 
@@ -162,26 +203,29 @@
   </section>
 
   <section class="cards">
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80" alt="birthday flowers">
-        <h3>birthday bloom</h3>
-        <p>a cheerful flower design to brighten someone’s special day.</p>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80"
+        alt="birthday flowers">
+      <h3>birthday bloom</h3>
+      <p>a cheerful flower design to brighten someone’s special day.</p>
     </div>
-  
-      <div class="card">
-       <img src="https://images.unsplash.com/photo-1511988617509-a57c8a288659?auto=format&fit=crop&w=800&q=80" alt="romantic flowers">
-       <h3>modern love</h3>
-       <p>celebrate love with a clean, elegant floral motif.</p>
-      </div>
-     <div class="card">
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1511988617509-a57c8a288659?auto=format&fit=crop&w=800&q=80"
+        alt="romantic flowers">
+      <h3>modern love</h3>
+      <p>celebrate love with a clean, elegant floral motif.</p>
+    </div>
+    <div class="card">
       <img src="cat-1.jpg" alt="thank you flowers">
       <h3>cozy thanks</h3>
       <p>send gratitude wrapped in warmth and charm.</p>
-  </div>
+    </div>
   </section>
 
   <footer>
     <p>&copy; 2025 Fucculent Greetings | Designed with ♡ | V1.0 </p>
   </footer>
 </body>
+
 </html>
